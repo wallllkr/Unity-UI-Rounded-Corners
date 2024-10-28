@@ -32,6 +32,7 @@ namespace Nobi.UiRoundedCorners {
 		// zw - halfSize
 		[HideInInspector, SerializeField] private Vector4 rect2props;
 		[HideInInspector, SerializeField] private MaskableGraphic image;
+        private MaterialType previousMaterialType;
 
 		private void OnValidate() {
 			Validate();
@@ -69,12 +70,13 @@ namespace Nobi.UiRoundedCorners {
 
 		public void Validate() {
 
-			string shaderName = materialType == MaterialType.Overlay 
-                ? "UI/RoundedCorners/RoundedCorners_OverlayNoZTest" 
-                : "UI/RoundedCorners/RoundedCorners";
-            
-            if (material == null) {
+            if (material == null || materialType != previousMaterialType) {
+                string shaderName = materialType == MaterialType.Overlay 
+                    ? "UI/RoundedCorners/RoundedCorners_OverlayNoZTest" 
+                    : "UI/RoundedCorners/RoundedCorners";
+
                 material = new Material(Shader.Find(shaderName));
+                previousMaterialType = materialType;
             }
 
 			if (image == null) {
