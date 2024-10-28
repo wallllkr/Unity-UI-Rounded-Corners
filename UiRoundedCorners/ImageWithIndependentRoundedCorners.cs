@@ -18,6 +18,11 @@ namespace Nobi.UiRoundedCorners {
 		// Vector2.right rotated counter-clockwise by 45 degrees
 		private static readonly Vector2 hNorm = new Vector2(.7071068f, .7071068f);
 		
+		public enum MaterialType {
+			Normal,
+			Overlay
+		}
+
 		public MaterialType materialType = MaterialType.Normal;
 		public Vector4 r = new Vector4(40f, 40f, 40f, 40f);
 		private Material material;

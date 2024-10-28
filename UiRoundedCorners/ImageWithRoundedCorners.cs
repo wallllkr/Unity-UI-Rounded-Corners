@@ -8,7 +8,10 @@ namespace Nobi.UiRoundedCorners {
 	public class ImageWithRoundedCorners : MonoBehaviour {
 		private static readonly int Props = Shader.PropertyToID("_WidthHeightRadius");
 		private static readonly int prop_OuterUV = Shader.PropertyToID("_OuterUV");
-
+		public enum MaterialType {
+			Normal,
+			Overlay
+		}
 		public MaterialType materialType = MaterialType.Normal;
 		public float radius = 40f;
 
