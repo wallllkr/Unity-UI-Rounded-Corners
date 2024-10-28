@@ -9,7 +9,9 @@ namespace Nobi.UiRoundedCorners {
 		private static readonly int Props = Shader.PropertyToID("_WidthHeightRadius");
 		private static readonly int prop_OuterUV = Shader.PropertyToID("_OuterUV");
 
+		public MaterialType materialType = MaterialType.Normal;
 		public float radius = 40f;
+
 		private Material material;
 		private Vector4 outerUV = new Vector4(0, 0, 1, 1);
 
@@ -50,9 +52,14 @@ namespace Nobi.UiRoundedCorners {
 		}
 
 		public void Validate() {
-			if (material == null) {
-				material = new Material(Shader.Find("UI/RoundedCorners/RoundedCorners"));
-			}
+
+			string shaderName = materialType == MaterialType.Overlay 
+                ? "UI/RoundedCorners/RoundedCorners_OverlayNoZTest" 
+                : "UI/RoundedCorners/RoundedCorners";
+            
+            if (material == null) {
+                material = new Material(Shader.Find(shaderName));
+            }
 
 			if (image == null) {
 				TryGetComponent(out image);
