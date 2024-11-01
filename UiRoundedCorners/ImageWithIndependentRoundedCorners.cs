@@ -71,8 +71,7 @@ namespace Nobi.UiRoundedCorners {
 		public void Validate() {
 
             if (material == null || materialType != previousMaterialType) {
-                //string shaderName = materialType == MaterialType.Overlay ? "UI/RoundedCorners/RoundedCorners_OverlayNoZTest" : "UI/RoundedCorners/RoundedCorners";
-                string shaderName = "UI/RoundedCorners/RoundedCorners";
+                string shaderName = materialType == MaterialType.Overlay ? "UI/RoundedCorners/RoundedCorners_OverlayNoZTest" : "UI/RoundedCorners/RoundedCorners";
 
                 material = new Material(Shader.Find(shaderName));
                 previousMaterialType = materialType;
